@@ -13,6 +13,7 @@ import ScrollToTop from "./app/layout/ScrollToTop";
 
 export const history = createBrowserHistory();
 
+
 ReactDOM.render(
   <StoreContext.Provider value={store}>
     <Router history={history}>
