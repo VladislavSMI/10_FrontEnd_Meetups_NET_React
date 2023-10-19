@@ -42,7 +42,7 @@ namespace Application.Comments
         this._context = context;
       }
 
-      //even that this is a command, we are going to return, because we need our server to generate ID for our comment and we can't do that from our client side, we also want to get user properties that shape the cooment data that we are going to be returning 
+      //even that this is a command, we are going to return, because we need our server to generate ID for our comment and we can't do that from our client side, we also want to get user properties that shape the comment data that we are going to be returning 
       public async Task<Result<CommentDto>> Handle(Command request, CancellationToken cancellationToken)
       {
         var activity = await _context.Activities.FindAsync(request.ActivityId);

@@ -28,7 +28,6 @@
     "react-dropzone": "^14.2.1",
     "react-infinite-scroller": "^1.2.6",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "5.0.0",
     "react-toastify": "^8.2.0",
     "rimraf": "^3.0.2",
     "semantic-ui-css": "^2.4.1",
@@ -39,11 +38,11 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "postbuild": "rimraf ../API/wwwroot && mv build ../API/wwwroot",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +65,11 @@
   "devDependencies": {
     "@types/react-datepicker": "^4.3.4",
     "@types/uuid": "^8.3.3",
-    "@types/yup": "^0.29.13"
+    "@types/yup": "^0.29.13",
+    "@vitejs/plugin-react-swc": "^3.4.0",
+    "eslint": "^8.51.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "vite": "^4.5.0"
   }
 }
