@@ -30,7 +30,36 @@ namespace API.Extensions
 
   string connStr;
 
-  connStr = config.GetConnectionString("DefaultConnection");
+  // ToDo: Docker in local development is not running under env == Development, I have to delete else for local development
+  if (env == "Development")
+  {
+    // Use connection string from file.
+    connStr = config.GetConnectionString("DefaultConnection");
+  }
+  else
+  {
+    var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+    // Split the URL into parts using '@' to separate credentials and the rest of the URL
+    var parts = connUrl.Split('@');
+    var credentials = parts[0];
+    var url = parts[1];
+
+    // Extract username and password
+    var userPass = credentials.Split(':')[2]; // Adjust index based on your URL format
+    var pgUser = userPass.Split(':')[0];
+    var pgPass = userPass.Split(':')[1];
+
+    // Extract host, port, and database
+    var hostPortDb = url.Split('/');
+    var pgHostPort = hostPortDb[0];
+    var pgDb = hostPortDb[1];
+
+    var pgHost = pgHostPort.Split(':')[0];
+    var pgPort = pgHostPort.Split(':')[1];
+
+    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+  }
 
   options.UseNpgsql(connStr);
 });
