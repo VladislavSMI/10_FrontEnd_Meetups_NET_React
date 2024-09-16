@@ -26,18 +26,28 @@ namespace API.Extensions
 
       services.AddDbContext<DataContext>(options =>
 {
+  var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
   string connStr;
 
-  var pgHost = Environment.GetEnvironmentVariable("pgHost");
-  var pgPort = Environment.GetEnvironmentVariable("pgPort");
-  var pgUser = Environment.GetEnvironmentVariable("pgUser");
-  var pgPass = Environment.GetEnvironmentVariable("pgPass");
-  var pgDb = Environment.GetEnvironmentVariable("pgDb");
+  if (env == "Development")
+  {
+    // Use connection string from file.
+    connStr = config.GetConnectionString("DefaultConnection");
+  }
+  else
+  {
+    var pgHost = Environment.GetEnvironmentVariable("pgHost");
+    var pgPort = Environment.GetEnvironmentVariable("pgPort");
+    var pgUser = Environment.GetEnvironmentVariable("pgUser");
+    var pgPass = Environment.GetEnvironmentVariable("pgPass");
+    var pgDb = Environment.GetEnvironmentVariable("pgDb");
 
-  connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
-
+    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+  }
 
   options.UseNpgsql(connStr);
+
 });
 
 
