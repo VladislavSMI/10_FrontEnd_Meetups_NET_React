@@ -12,6 +12,10 @@ body {
   color: var(--white-color) !important;
 }
 
+.ml-2 {
+  margin-left: 2rem;
+}
+
 .flex-center {
   display: flex;
   flex-direction: column;
