@@ -56,15 +56,19 @@ export default function ActivityListItem({ activity }: Props) {
       </Segment>
       <Segment inverted>
         <span>
-          <Icon name="clock" /> {format(activity.date!, "dd MMM yyyy h:mm aa")}
-          <Icon name="marker" /> {activity.venue}
+          <Icon name="clock" color="yellow" />
+          {format(activity.date!, "dd MMM yyyy h:mm aa")}
+          <span className="ml-2">
+            <Icon name="marker" color="yellow" /> {activity.venue}
+          </span>
         </span>
       </Segment>
       <Segment inverted secondary>
         <ActivityListItemAttendee attendees={activity.attendees!} />
       </Segment>
       <Segment inverted clearing>
-        <p>{activity.description}</p>
+        <Icon name="info" color="yellow" />
+        {activity.description}
         <Button
           as={Link}
           to={`/activities/${activity.id}`}
