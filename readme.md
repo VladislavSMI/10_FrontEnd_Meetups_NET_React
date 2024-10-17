@@ -8,7 +8,7 @@ This application is deployed to **AWS** across a highly available and secure inf
 
   - The app is a **Dockerized** .NET and React app, with the Docker image hosted on Docker Hub.
   - The React app is built using **Vite** during the CI/CD pipeline, and the build artifacts (static files) are copied into the **wwwroot** folder of the .NET API, allowing the API to serve the frontend.
-  - EC2 instances are deployed in a **public subnet** but do not allow direct public access. Traffic is routed exclusively through the Application Load Balancer (ALB), ensuring that the instances remain secure.
+  - EC2 instances are deployed in a **public subnet** but do not allow direct public access. Traffic is routed exclusively through the Application Load Balancer (ALB) via https.
 
 - **PostgreSQL Database**: The PostgreSQL database is deployed in a **private subnet**, which ensures isolation from the public internet and secures data within the VPC.
 
@@ -22,7 +22,7 @@ This application is deployed to **AWS** across a highly available and secure inf
 - **VPC Setup**: The application runs in a custom **VPC** with a public subnet for EC2 instances and a private subnet for the database. Security groups are configured to control traffic to and from these resources.
 - **Security Groups**: EC2 instances are protected by security groups, allowing only traffic from the ALB and blocking all other public traffic.
 - **IAM Roles**: Appropriate IAM roles and policies are assigned to ensure secure access to AWS resources.
-- **Least Privilege Access**: IAM policies follow the principle of **least privilege**, granting only the permissions necessary for each component to function properly. For example, the EC2 instance role includes permissions to interact with **SSM** for deployment automation, but nothing more.
+- **Least Privilege Access**: IAM policies follow the principle of **least privilege**, granting only the permissions necessary for each component to function properly. For example, the EC2 instance role includes permissions to interact with **SSM** for deployment automation.
 
 ## Docker and CI/CD
 
@@ -49,7 +49,6 @@ This application is deployed to **AWS** across a highly available and secure inf
 
 - **High Availability**: Deployed across two Availability Zones for resilience and minimal downtime.
 - **Security**:
-  - EC2 instances are secured behind the Application Load Balancer.
   - The PostgreSQL database is isolated in a private subnet.
   - All traffic is routed through HTTPS, secured by SSL.
   - Deployment automation via **SSM** avoids direct SSH access, reducing potential attack vectors.
