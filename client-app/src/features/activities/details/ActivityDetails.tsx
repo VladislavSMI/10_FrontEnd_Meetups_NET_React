@@ -1,14 +1,19 @@
 import React from "react";
 import { Button, Card, Image } from "semantic-ui-react";
-import { IActivity } from "../../../app/models/activity";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
+import { useStore } from "../../../app/stores/store";
 
-interface Props {
-  activity: IActivity;
-  cancelSelectActivity: () => void;
-  openForm: (id: string) => void;
-}
+function ActivityDetails() {
+  const { activityStore } = useStore();
+  const {
+    selectedActivity: activity,
+    openForm,
+    cancelSelectedActivity,
+  } = activityStore;
 
-function ActivityDetails({ activity, cancelSelectActivity, openForm }: Props) {
+  // just temporary fix the problem with activity error undefined
+  if (!activity) return <LoadingComponent content={"Loading..."} />;
+
   return (
     <Card fluid>
       <Image src={`/assets/categoryImages/${activity.category}.jpg`} />
@@ -28,7 +33,7 @@ function ActivityDetails({ activity, cancelSelectActivity, openForm }: Props) {
             content="Edit"
           />
           <Button
-            onClick={cancelSelectActivity}
+            onClick={cancelSelectedActivity}
             basic
             color="grey"
             content="Cancel"

@@ -1,11 +1,10 @@
 import React from "react";
 import { Button, Container, Menu } from "semantic-ui-react";
+import { useStore } from "../stores/store";
 
-interface Props {
-  openForm: () => void;
-}
+function NavBar() {
+  const { activityStore } = useStore();
 
-function NavBar({ openForm }: Props) {
   return (
     <Menu inverted fixed="top">
       <Container>
@@ -19,7 +18,12 @@ function NavBar({ openForm }: Props) {
         </Menu.Item>
         <Menu.Item name="Activities" />
         <Menu.Item>
-          <Button onClick={openForm} positive content="Create Activity" />
+          <Button
+            // We have to use arrow function here because our function is expecting at least optional parameter
+            onClick={() => activityStore.openForm()}
+            positive
+            content="Create Activity"
+          />
         </Menu.Item>
       </Container>
     </Menu>

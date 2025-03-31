@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { request } from "http";
 import { IActivity } from "../models/activity";
 
 const sleep = (delay: number) => {
@@ -20,7 +19,6 @@ axios.interceptors.response.use(async (response) => {
   }
 });
 
-// we have to add generic type for type safty
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const requests = {
