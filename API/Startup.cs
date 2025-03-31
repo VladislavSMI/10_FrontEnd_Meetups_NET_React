@@ -1,18 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using API.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using Persistence;
 
 namespace API
 {
@@ -30,25 +21,8 @@ namespace API
     {
 
       services.AddControllers();
-      services.AddSwaggerGen(c =>
-      {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-      });
+      services.AddApplicationServices(_config);
 
-      services.AddDbContext<DataContext>(opt =>
-      {
-        opt.UseSqlite(_config.GetConnectionString("DefaultConnection"));
-      });
-
-      // We have to add it to our middleware in Configure method
-      services.AddCors(opt =>
-      {
-        opt.AddPolicy("CorsPolicy", policy =>
-        {
-          // Once we deploy our app, this will become irrelevant as we will be serving our app from same domain
-          policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
-        });
-      });
     }
 
     // To defined the middleware pipeline
