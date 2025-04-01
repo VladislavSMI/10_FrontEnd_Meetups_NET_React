@@ -1,5 +1,5 @@
 using Application.Activities;
-using Application.Activities.Core;
+using Application.Core;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

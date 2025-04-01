@@ -5,14 +5,19 @@ import ActivityDashboard from "../../features/activities/dashboard/ActivityDashb
 import ActivityForm from "../../features/activities/form/ActivityForm";
 import HomePage from "../../features/home/HomePage";
 import { observer } from "mobx-react-lite";
-import { Route, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import ActivityDetails from "../../features/activities/details/ActivityDetails";
+import TestErrors from "../../features/errors/TestErrors";
+import { ToastContainer } from "react-toastify";
+import NotFound from "../../features/errors/NotFound";
+import ServerError from "../../features/errors/ServerError";
 
 function App() {
   const location = useLocation();
 
   return (
     <>
+      <ToastContainer position="bottom-right" hideProgressBar />
       <Route exact path="/" component={HomePage} />
       <Route
         path={"/(.+)"}
@@ -20,15 +25,20 @@ function App() {
           <>
             <NavBar />
             <Container style={{ marginTop: "7em" }}>
-              {/* We have to use exact keyword as path with forward slash is also part of activities /activities and /createActivity path="/" */}
+              {/* We use the "exact" keyword because the root path "/" is also a prefix for other routes like "/activities" and "/createActivity" */}
 
-              <Route exact path="/activities" component={ActivityDashboard} />
-              <Route path="/activities/:id" component={ActivityDetails} />
-              <Route
-                key={location.key}
-                path={["/createActivity", "/manage/:id"]}
-                component={ActivityForm}
-              />
+              <Switch>
+                <Route exact path="/activities" component={ActivityDashboard} />
+                <Route path="/activities/:id" component={ActivityDetails} />
+                <Route
+                  key={location.key}
+                  path={["/createActivity", "/manage/:id"]}
+                  component={ActivityForm}
+                />
+                <Route path="/errors" component={TestErrors} />
+                <Route path="/server-error" component={ServerError} />
+                <Route component={NotFound} />
+              </Switch>
             </Container>
           </>
         )}
