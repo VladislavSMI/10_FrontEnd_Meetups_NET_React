@@ -1,4 +1,6 @@
-import React from "react";
+import { observer } from "mobx-react-lite";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { Button, Card, Image } from "semantic-ui-react";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/store";
@@ -7,12 +9,20 @@ function ActivityDetails() {
   const { activityStore } = useStore();
   const {
     selectedActivity: activity,
-    openForm,
-    cancelSelectedActivity,
+    loadActivity,
+    loadingInitial,
   } = activityStore;
+  const { id } = useParams<{ id: string }>();
 
-  // just temporary fix the problem with activity error undefined
-  if (!activity) return <LoadingComponent content={"Loading..."} />;
+  useEffect(() => {
+    if (id) {
+      loadActivity(id);
+    }
+  }, [id, loadActivity]);
+
+  // ToDo: temporary fix for the problem with activity error undefined
+  if (loadingInitial || !activity)
+    return <LoadingComponent content={"Loading..."} />;
 
   return (
     <Card fluid>
@@ -26,22 +36,12 @@ function ActivityDetails() {
       </Card.Content>
       <Card.Content extra>
         <Button.Group widths="2">
-          <Button
-            onClick={() => openForm(activity.id)}
-            basic
-            color="blue"
-            content="Edit"
-          />
-          <Button
-            onClick={cancelSelectedActivity}
-            basic
-            color="grey"
-            content="Cancel"
-          />
+          <Button as={Link} to={`/manage/${activity.id}`} basic color="blue" content="Edit" />
+          <Button as={Link} to={"/activities"} basic color="grey" content="Cancel" />
         </Button.Group>
       </Card.Content>
     </Card>
   );
 }
 
-export default ActivityDetails;
+export default observer(ActivityDetails);
