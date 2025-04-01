@@ -11,9 +11,8 @@ configure({
 
 function ActivityList() {
   const { activityStore } = useStore();
-  const { groupedActivities } =
-    activityStore;
-
+  const { groupedActivities } = activityStore;
+  
   return (
     <>
       {groupedActivities.map(([group, activities]) => (
