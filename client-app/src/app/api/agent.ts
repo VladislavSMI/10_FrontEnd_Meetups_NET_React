@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
+import { request } from "http";
 import { toast } from "react-toastify";
 import { history } from "../../index";
 import { ActivityFormValues, IActivity } from "../models/activity";
@@ -98,6 +99,8 @@ const Account = {
 
 const Profiles = {
   get: (username: string) => requests.get<IProfile>(`/profiles/${username}`),
+  updateProfile: (profile: Partial<IProfile>) =>
+    requests.put<void>(`/profiles`, profile),
   uploadPhoto: (file: Blob) => {
     let formData = new FormData();
     formData.append("File", file);
