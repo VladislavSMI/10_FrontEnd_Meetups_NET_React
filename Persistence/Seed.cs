@@ -48,73 +48,147 @@ namespace Persistence
                 {
                     new Activity
                     {
-                        Title = "Past Activity 1",
-                        Date = DateTime.Now.AddMonths(-2),
-                        Description = "Activity 2 months ago",
-                        Category = "drinks",
-                        City = "London",
-                        Venue = "Pub",
-                        Attendees = new List<ActivityAttendee>
-                        {
-                            new ActivityAttendee
-                            {
-                                AppUser = users[0],
-                                IsHost = true
-                            }
-                        }
-                    },
-                    new Activity
-                    {
-                        Title = "Past Activity 2",
-                        Date = DateTime.Now.AddMonths(-1),
-                        Description = "Activity 1 month ago",
-                        Category = "culture",
-                        City = "Paris",
-                        Venue = "The Louvre",
-                        Attendees = new List<ActivityAttendee>
-                        {
-                            new ActivityAttendee
-                            {
-                                AppUser = users[0],
-                                IsHost = true
-                            },
-                            new ActivityAttendee
-                            {
-                                AppUser = users[1],
-                                IsHost = false
-                            },
-                        }
-                    },
-                    new Activity
-                    {
-                        Title = "Future Activity 1",
-                        Date = DateTime.Now.AddMonths(1),
-                        Description = "Activity 1 month in future",
-                        Category = "music",
-                        City = "London",
-                        Venue = "Wembly Stadium",
-                        Attendees = new List<ActivityAttendee>
-                        {
-                            new ActivityAttendee
-                            {
-                                AppUser = users[2],
-                                IsHost = true
-                            },
-                            new ActivityAttendee
-                            {
-                                AppUser = users[1],
-                                IsHost = false
-                            },
-                        }
-                    },
-                    new Activity
-                    {
-                        Title = "Future Activity 2",
+                        Title = "Introduction to front-end web development",
                         Date = DateTime.Now.AddMonths(2),
-                        Description = "Activity 2 months in future",
-                        Category = "food",
+                        Description = "Front-end web development",
+                        Category = "frontend",
+                        City = "Luxembourg",
+                        Venue = "Zoom",
+                        Attendees = new List<ActivityAttendee>
+                        {
+                            new ActivityAttendee
+                            {
+                                AppUser = users[0],
+                                IsHost = true
+                            }
+                        }
+                    },
+                    new Activity
+                    {
+                        Title = "Introduction to back-end web development",
+                        Date = DateTime.Now.AddMonths(3),
+                        Description = "Back-end web development",
+                        Category = "backend",
+                        City = "Luxembourg",
+                        Venue = "Zoom",
+                        Attendees = new List<ActivityAttendee>
+                        {
+                            new ActivityAttendee
+                            {
+                                AppUser = users[0],
+                                IsHost = true
+                            }
+                        }
+                    },
+                    new Activity
+                    {
+                        Title = "Introduction to full-stack web development",
+                        Date = DateTime.Now.AddMonths(1),
+                        Description = "Full-stack web development",
+                        Category = "fullstack",
+                        City = "Luxembourg",
+                        Venue = "Zoom",
+                        Attendees = new List<ActivityAttendee>
+                        {
+                            new ActivityAttendee
+                            {
+                                AppUser = users[0],
+                                IsHost = true
+                            }
+                        }
+                    },
+
+                    new Activity
+                    {
+                        Title = "JavaScript meetups",
+                        Date = DateTime.Now.AddMonths(-2),
+                        Description = "General JavaScript meeting",
+                        Category = "javascript",
+                        City = "Luxembourg",
+                        Venue = "Zoom",
+                        Attendees = new List<ActivityAttendee>
+                        {
+                            new ActivityAttendee
+                            {
+                                AppUser = users[0],
+                                IsHost = true
+                            }
+                        }
+                    },
+                    new Activity
+                    {
+                        Title = "React meetups",
+                        Date = DateTime.Now.AddMonths(-1),
+                        Description = "General React meeting",
+                        Category = "react",
+                        City = "Paris",
+                        Venue = "Zoom",
+                        Attendees = new List<ActivityAttendee>
+                        {
+                            new ActivityAttendee
+                            {
+                                AppUser = users[0],
+                                IsHost = true
+                            },
+                            new ActivityAttendee
+                            {
+                                AppUser = users[1],
+                                IsHost = false
+                            },
+                        }
+                    },
+                    new Activity
+                    {
+                        Title = "Angular meetups",
+                        Date = DateTime.Now.AddMonths(3),
+                        Description = "General Angular meeting",
+                        Category = "angular",
+                        City = "Paris",
+                        Venue = "Zoom",
+                        Attendees = new List<ActivityAttendee>
+                        {
+                            new ActivityAttendee
+                            {
+                                AppUser = users[0],
+                                IsHost = true
+                            },
+                            new ActivityAttendee
+                            {
+                                AppUser = users[1],
+                                IsHost = false
+                            },
+                        }
+                    },
+                    new Activity
+                    {
+                        Title = "Back-end with NodeJS",
+                        Date = DateTime.Now.AddMonths(1),
+                        Description = "Intorduction to NodeJS as back-end for React app",
+                        Category = "nodejs",
                         City = "London",
-                        Venue = "Jamies Italian",
+                        Venue = "Cowork Garden park",
+                        Attendees = new List<ActivityAttendee>
+                        {
+                            new ActivityAttendee
+                            {
+                                AppUser = users[2],
+                                IsHost = true
+                            },
+                            new ActivityAttendee
+                            {
+                                AppUser = users[1],
+                                IsHost = false
+                            },
+                        }
+                    },
+                    new Activity
+                    {
+                        Title = "Back-end with C# .net",
+                        Date = DateTime.Now.AddMonths(2),
+                        Description = "Introduction to C# .net back-end services for React app",
+                        Category = "net",
+                        City = "Amsterdam",
+                        Venue = "Cohost venues",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
@@ -131,12 +205,12 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Future Activity 3",
+                        Title = "UseEffect and UseState in React",
                         Date = DateTime.Now.AddMonths(3),
-                        Description = "Activity 3 months in future",
-                        Category = "drinks",
-                        City = "London",
-                        Venue = "Pub",
+                        Description = "Dive deep into two most common React hooks",
+                        Category = "react",
+                        City = "Amsterdam",
+                        Venue = "Channel meetups group",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
@@ -153,12 +227,12 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Future Activity 4",
+                        Title = "Next Steps for React",
                         Date = DateTime.Now.AddMonths(4),
-                        Description = "Activity 4 months in future",
-                        Category = "culture",
-                        City = "London",
-                        Venue = "British Museum",
+                        Description = "Discussion about future of React",
+                        Category = "react",
+                        City = "Berlin",
+                        Venue = "Fly High coworks",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
@@ -170,12 +244,12 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Future Activity 5",
+                        Title = "Things that every JavaScript developer must know",
                         Date = DateTime.Now.AddMonths(5),
-                        Description = "Activity 5 months in future",
-                        Category = "drinks",
-                        City = "London",
-                        Venue = "Punch and Judy",
+                        Description = "What every JavaScript developer must know in oder to be effective in development",
+                        Category = "javascript",
+                        City = "Vienna",
+                        Venue = "General cowork Vienna",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
@@ -192,12 +266,12 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Future Activity 6",
+                        Title = "Thnigs JavaScript developers should know",
                         Date = DateTime.Now.AddMonths(6),
-                        Description = "Activity 6 months in future",
-                        Category = "music",
-                        City = "London",
-                        Venue = "O2 Arena",
+                        Description = "Things JavaScript developer should know",
+                        Category = "javascript",
+                        City = "Berlin",
+                        Venue = "Uptown cowork",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
@@ -214,12 +288,12 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Future Activity 7",
+                        Title = "The ultimate guide to JavaScipt testing",
                         Date = DateTime.Now.AddMonths(7),
-                        Description = "Activity 7 months in future",
-                        Category = "travel",
+                        Description = "How to test",
+                        Category = "javascript",
                         City = "Berlin",
-                        Venue = "All",
+                        Venue = "All purpose meetups room",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
@@ -236,12 +310,12 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Future Activity 8",
+                        Title = "Understanding and using ES modules in NodeJS",
                         Date = DateTime.Now.AddMonths(8),
                         Description = "Activity 8 months in future",
-                        Category = "drinks",
+                        Category = "nodejs",
                         City = "London",
-                        Venue = "Pub",
+                        Venue = "Cowork next to tree",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
