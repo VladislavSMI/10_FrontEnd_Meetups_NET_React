@@ -55,7 +55,7 @@ namespace API
             .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "https://cdn.jsdelivr.net", "data:"))
             .FormActions(s => s.Self())
             .FrameAncestors(s => s.Self())
-            .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com"))
+            .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "https://reactivities-testing.herokuapp.com"))
             .ScriptSources(s => s.Self())
       );
 
