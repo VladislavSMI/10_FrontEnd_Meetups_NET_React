@@ -4,8 +4,6 @@ import { ActivityFormValues, IActivity } from "../models/activity";
 import { format } from "date-fns";
 import { store } from "./store";
 import { IProfile } from "../models/profile";
-import { Profiler } from "react";
-import { RatingIcon } from "semantic-ui-react";
 
 export default class ActivityStore {
   activityRegistry = new Map<string, IActivity>();

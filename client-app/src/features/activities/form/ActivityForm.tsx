@@ -12,7 +12,7 @@ import { useStore } from "../../../app/stores/store";
 import { v4 as uuid } from "uuid";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { ActivityFormValues, IActivity } from "../../../app/models/activity";
+import { ActivityFormValues } from "../../../app/models/activity";
 
 function ActivityForm() {
   const history = useHistory();
@@ -21,7 +21,6 @@ function ActivityForm() {
   const {
     createActivity,
     updateActivity,
-    loading,
     loadActivity,
     loadingInitial,
   } = activityStore;
