@@ -31,6 +31,7 @@ namespace API.Extensions
         {
           // Once we deploy our app, this will become irrelevant as we will be serving our app from same domain
           policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+          // policy.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
         });
       });
 
