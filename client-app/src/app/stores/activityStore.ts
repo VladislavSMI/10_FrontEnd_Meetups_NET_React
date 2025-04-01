@@ -4,7 +4,6 @@ import { IActivity } from "../models/activity";
 import { v4 as uuid } from "uuid";
 
 export default class ActivityStore {
-  //Map with 2 types => first one is key which represents activity id and the second will be Activity object iteself
   activityRegistry = new Map<string, IActivity>();
   selectedActivity: IActivity | undefined = undefined;
   editMode = false;
@@ -37,7 +36,6 @@ export default class ActivityStore {
     }
   };
 
-  // error with async await and mobx => we have to put code used after async in runInAction handlerer
   setLoadingInitial = (state: boolean) => {
     this.loadingInitial = state;
   };
@@ -65,7 +63,7 @@ export default class ActivityStore {
 
     try {
       await agent.Activities.create(activity);
-      // This is because of mobx and async await functions => if we run code in await block then have to use this.
+      // After an await, observable state updates must be wrapped in runInAction for MobX to track them properly
       runInAction(() => {
         this.activityRegistry.set(activity.id, activity);
         this.selectedActivity = activity;
