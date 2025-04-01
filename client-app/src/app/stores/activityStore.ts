@@ -196,9 +196,13 @@ export default class ActivityStore {
           this.activityRegistry.set(activity.id, updatedActivity as IActivity);
           this.selectedActivity = updatedActivity as IActivity;
         }
+        this.loading = false;
       });
     } catch (error) {
       console.log(error);
+      runInAction(() => {
+        this.loading = false;
+      });
     }
   };
 
