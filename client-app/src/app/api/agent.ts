@@ -70,12 +70,17 @@ axios.interceptors.response.use(
           toast.error("Session expired - please login again");
         }
         break;
+      case 403:
+        history.push("/not-found");
+        break;
       case 404:
         history.push("/not-found");
         break;
       case 500:
         store.commonStore.setServerError(data);
+        toast.error(`Error: ${data.message}`);
         history.push("/server-error");
+        store.modalStore.closeModal();
         break;
     }
     return Promise.reject(error);
