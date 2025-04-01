@@ -26,19 +26,29 @@ export default observer(function ProfileActivities() {
     );
   };
   return (
-    <Tab.Pane loading={loadingActivities}>
+    <Tab.Pane inverted loading={loadingActivities}>
       <Grid>
         <Grid.Column width={16}>
-          <Header floated="left" icon="calendar" content={"Activities"} />
+          <Header
+            inverted
+            floated="left"
+            icon="calendar"
+            content={"Activities"}
+          />
         </Grid.Column>
         <Grid.Column width={16}>
           <Tab
             panes={panes}
-            menu={{ secondary: true, pointing: true }}
+            menu={{
+              inverted: true,
+              secondary: true,
+              pointing: true,
+              stackable: true,
+            }}
             onTabChange={(e, data) => handleTabChange(e, data)}
           />
           <br />
-          <Card.Group itemsPerRow={3}>
+          <Card.Group centered>
             {userActivities.map((activity: IUserActivity) => (
               <Card
                 as={Link}

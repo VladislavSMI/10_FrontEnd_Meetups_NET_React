@@ -22,15 +22,17 @@ export default observer(function ProfilePage() {
   if (loadingProfile) return <LoadingComponent content="Loading profile..." />;
 
   return (
-    <Grid>
-      <Grid.Column width={16}>
-        {profile && (
-          <>
-            <ProfileHeader profile={profile} />
-            <ProfileContent profile={profile} />
-          </>
-        )}
-      </Grid.Column>
-    </Grid>
+    <div className="mobile">
+      <Grid>
+        <Grid.Column width={16}>
+          {profile && (
+            <>
+              <ProfileHeader profile={profile} />
+              <ProfileContent profile={profile} />
+            </>
+          )}
+        </Grid.Column>
+      </Grid>
+    </div>
   );
 });

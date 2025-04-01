@@ -9,12 +9,13 @@ export default observer(function ProfileFollowings() {
   const { profile, followings, loadingFollowings, activeTab } = profileStore;
 
   return (
-    <Tab.Pane loading={loadingFollowings}>
+    <Tab.Pane loading={loadingFollowings} inverted>
       <Grid>
         <Grid.Column width={16}>
           <Header
             floated="left"
             icon="user"
+            inverted
             content={
               activeTab === 3
                 ? `People following ${profile?.displayName}`
@@ -23,7 +24,7 @@ export default observer(function ProfileFollowings() {
           />
         </Grid.Column>
         <Grid.Column width={16}>
-          <Card.Group itemsPerRow={4}>
+          <Card.Group centered>
             {followings.map((profile) => (
               <ProfileCard key={profile.userName} profile={profile} />
             ))}

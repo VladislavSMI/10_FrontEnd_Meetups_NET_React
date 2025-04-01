@@ -83,12 +83,14 @@ export default class ActivityStore {
 
   get groupedActivities() {
     return Object.entries(
-      this.activitiesByDate.reduce((activities, activity) => {
-        const date = format(activity.date!, "dd MMM yyyy");
-        activities[date] = activities[date]
-          ? [...activities[date], activity]
-          : [activity];
-        return activities;
+      this.activitiesByDate.reduce((accumulator, currentValue) => {
+        const key = format(currentValue.date!, "dd MMM yyyy");
+
+        accumulator[key] = accumulator[key]
+          ? [...accumulator[key], currentValue]
+          : [currentValue];
+
+        return accumulator;
       }, {} as { [key: string]: IActivity[] })
     );
   }

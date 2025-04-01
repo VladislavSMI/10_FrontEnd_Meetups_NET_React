@@ -41,7 +41,7 @@ export default function PhotoWidgetDropZone({ setFiles }: Props) {
     >
       <input {...getInputProps()} />
       <Icon name="upload" size="huge" />
-      <Header content="Drop image here" />
+      <Header inverted content="Drop image here" />
     </div>
   );
 }

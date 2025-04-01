@@ -5,7 +5,6 @@ import ActivityFilters from "./ActivityFilters";
 
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
-import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { PagingParams } from "../../../app/models/pagination";
 import InfiniteScroll from "react-infinite-scroller";
 import ActivityListItemPlaceholder from "./ActivityListItemPlaceholder";
@@ -37,7 +36,7 @@ function ActivityDashboard() {
   }, [activityRegistry.size, loadActivities]);
 
   return (
-    <Grid>
+    <Grid columns={2} reversed="mobile" stackable mobile>
       <Grid.Column width="10">
         {loadingInitial && !loadingNext ? (
           <>

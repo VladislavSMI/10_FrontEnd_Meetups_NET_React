@@ -9,8 +9,13 @@ import RegisterForm from "../users/RegisterForm";
 export default observer(function HomePage() {
   const { userStore, modalStore } = useStore();
 
+  function submitLogin() {
+    const values = { email: "guest@test.com", password: "Guest1$$" };
+    userStore.login(values);
+  }
+
   return (
-    <Segment inverted textAlign="center" vertical className="masthead">
+    <Segment textAlign="center" vertical className="masthead">
       <Container text>
         <Header as="h1" inverted>
           <Image
@@ -19,13 +24,19 @@ export default observer(function HomePage() {
             alt="logo"
             style={{ marginBottom: 12 }}
           />
-          Reactivities
+          WebDev MeetUps
         </Header>
         {userStore.isLoggedIn ? (
           <>
-            <Header as="h2" inverted content="Welcome to Reactivities" />
-            <Button as={Link} to="/activities" size="huge" inverted>
-              Go to Activities!
+            <Header as="h2" inverted content="Welcome" />
+            <Button
+              as={Link}
+              to="/activities"
+              size="huge"
+              inverted
+              color="yellow"
+            >
+              Go to MeetUps!
             </Button>
           </>
         ) : (
@@ -34,16 +45,28 @@ export default observer(function HomePage() {
               onClick={() => modalStore.openModal(<LoginForm />)}
               size="huge"
               inverted
+              color="yellow"
             >
-              Login!
+              Login
             </Button>
             <Button
               onClick={() => modalStore.openModal(<RegisterForm />)}
               size="huge"
               inverted
+              color="yellow"
             >
-              Register!
+              Register
             </Button>
+            <div style={{ marginTop: "0.4rem" }}>
+              <Button
+                onClick={() => submitLogin()}
+                size="huge"
+                inverted
+                color="yellow"
+              >
+                Guest
+              </Button>
+            </div>
           </>
         )}
       </Container>

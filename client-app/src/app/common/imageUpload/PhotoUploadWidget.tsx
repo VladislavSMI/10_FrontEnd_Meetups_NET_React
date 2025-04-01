@@ -26,14 +26,14 @@ export default function PhotoUploadWidget({ loading, uploadPhoto }: Props) {
   }, [files]);
 
   return (
-    <Grid>
-      <Grid.Column width={4}>
-        <Header sub color="teal" content="Step-1 - Add Photo" />
+    <Grid stackable>
+      <Grid.Column width={4} style={{ textAlign: "center" }}>
+        <Header sub color="yellow" content="Step-1 - Add Photo" />
         <PhotoWidgetDropZone setFiles={setFiles} />
       </Grid.Column>
       <Grid.Column width={1} />
-      <Grid.Column width={4}>
-        <Header sub color="teal" content="Step-2 - Resize image" />
+      <Grid.Column width={4} style={{ textAlign: "center" }}>
+        <Header sub color="yellow" content="Step-2 - Resize image" />
         {files && files.length > 0 && (
           <PhotoWidgetCropper
             setCropper={setCropper}
@@ -42,28 +42,37 @@ export default function PhotoUploadWidget({ loading, uploadPhoto }: Props) {
         )}
       </Grid.Column>
       <Grid.Column width={1} />
-      <Grid.Column width={4}>
-        <Header sub color="teal" content="Step-3 - Preview & Upload" />
+      <Grid.Column width={4} style={{ textAlign: "center" }}>
+        <Header sub color="yellow" content="Step-3 - Preview & Upload" />
         {files && files.length > 0 && (
-          <>
+          <div className="flex-center">
             <div
               className="img-preview"
-              style={{ minHeight: 200, overflow: "hidden" }}
+              style={{
+                minHeight: 200,
+                minWidth: 200,
+                overflow: "hidden",
+              }}
             ></div>
-            <Button.Group widths={2}>
+            <Button.Group>
               <Button
+                basic
+                color="yellow"
+                content="Upload"
                 loading={loading}
                 onClick={onCrop}
-                positive
                 icon="check"
               />
               <Button
+                basic
+                color="red"
+                content="Close"
                 disabled={loading}
                 onClick={() => setFiles([])}
                 icon="close"
               />
             </Button.Group>
-          </>
+          </div>
         )}
       </Grid.Column>
     </Grid>

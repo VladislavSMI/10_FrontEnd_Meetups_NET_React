@@ -26,12 +26,11 @@ function ActivityDetails() {
     }
   }, [id, loadActivity, clearSelectedActivity]);
 
-  // ToDo: temporary fix for the problem with activity error undefined
   if (loadingInitial || !activity)
     return <LoadingComponent content={"Loading..."} />;
 
   return (
-    <Grid>
+    <Grid columns={2} reversed="mobile" stackable className="mobile">
       <Grid.Column width={10}>
         <ActivityDetailedHeader activity={activity} />
         <ActivityDetailedInfo activity={activity} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Segment, List, Label, Item, Image } from "semantic-ui-react";
+import { Segment, List, Label, Item, Image, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { IActivity } from "../../../app/models/activity";
@@ -15,24 +15,21 @@ export default observer(function ActivityDetailedSidebar({
 
   return (
     <>
-      <Segment
-        textAlign="center"
-        style={{ border: "none" }}
-        attached="top"
-        secondary
-        inverted
-        color="teal"
-      >
-        {attendees.length} {attendees.length === 1 ? "Person" : "People"} going
+      <Segment textAlign="center" inverted>
+        <Header>
+          {" "}
+          {attendees.length} {attendees.length === 1 ? "Person" : "People"}{" "}
+          going
+        </Header>
       </Segment>
-      <Segment attached>
+      <Segment inverted>
         <List relaxed divided>
           {attendees.map((attendee) => (
             <Item style={{ position: "relative" }} key={attendee.userName}>
               {attendee.userName === host?.userName && (
                 <Label
                   style={{ position: "absolute" }}
-                  color="orange"
+                  color="yellow"
                   ribbon="right"
                 >
                   Host

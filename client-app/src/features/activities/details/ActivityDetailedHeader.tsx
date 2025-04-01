@@ -7,7 +7,9 @@ import { format } from "date-fns";
 import { useStore } from "../../../app/stores/store";
 
 const activityImageStyle = {
-  filter: "brightness(30%)",
+  filter: "brightness(50%)",
+  minHeight: "15rem",
+  objectFit: "cover",
 };
 
 const activityImageTextStyle = {
@@ -30,7 +32,7 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
 
   return (
     <Segment.Group>
-      <Segment basic attached="top" style={{ padding: "0" }}>
+      <Segment inverted>
         {activity.isCancelled && (
           <Label
             style={{ position: "absolute", zIndex: 1000, left: -14, top: 20 }}
@@ -49,9 +51,9 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
             <Item>
               <Item.Content>
                 <Header
-                  size="huge"
+                  size="large"
                   content={activity.title}
-                  style={{ color: "white" }}
+                  style={{ color: "white", width: "90%" }}
                 />
                 <p>{format(activity.date!, "dd MMM yyyy")}</p>
                 <p>
@@ -67,13 +69,13 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
           </Item.Group>
         </Segment>
       </Segment>
-      <Segment clearing attached="bottom">
+      <Segment clearing inverted>
         {activity.isHost ? (
           <>
             <Button
               color={activity.isCancelled ? "green" : "red"}
               floated="left"
-              basic
+              inverted
               content={
                 activity.isCancelled
                   ? "Re-activate Activity"
@@ -86,7 +88,8 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
               disabled={activity.isCancelled}
               as={Link}
               to={`/manage/${activity.id}`}
-              color="orange"
+              color="yellow"
+              inverted
               floated="right"
             >
               Manage Event
@@ -101,7 +104,8 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
             disabled={activity.isCancelled}
             loading={loading}
             onClick={updateAttendance}
-            color="teal"
+            color="yellow"
+            inverted
           >
             Join Activity
           </Button>

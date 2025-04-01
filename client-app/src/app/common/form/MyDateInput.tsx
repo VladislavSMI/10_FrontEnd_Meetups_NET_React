@@ -9,6 +9,7 @@ import DatePicker, { ReactDatePickerProps } from "react-datepicker";
 export default function MyDateInput(props: Partial<ReactDatePickerProps>) {
   const [field, meta, helpers] = useField(props.name!);
   return (
+    // css for date picker we can target it styles with .react-datepicker-wrapper {}
     <FormField error={meta.touched && !!meta.error}>
       <DatePicker
         {...field}

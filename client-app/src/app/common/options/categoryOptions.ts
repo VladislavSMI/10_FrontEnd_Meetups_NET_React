@@ -1,8 +1,10 @@
 export const categoryOptions = [
-  {text: "Drinks", value: "drinks"},
-  {text: "Culture", value : "culture"},
-  {text: "Film", value: "film"},
-  {text: "Food", value: "food"},
-  {text: "Music", value: "music"},
-  {text: "Travel", value: "travel"},
-]
+  { text: "Front-end", value: "frontend" },
+  { text: "Back-end", value: "backend" },
+  { text: "Full-stack", value: "fullstack" },
+  { text: "JavaScript", value: "javascript" },
+  { text: "React", value: "react" },
+  { text: "Angular", value: "angular" },
+  { text: "NodeJS", value: "nodejs" },
+  { text: ".net", value: "net" },
+];

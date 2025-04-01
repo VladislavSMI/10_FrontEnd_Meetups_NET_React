@@ -9,18 +9,20 @@ export default observer(function ProfileAbout() {
   const { isCurrentUser, profile } = profileStore;
   const [editMode, setEditMode] = useState(false);
   return (
-    <Tab.Pane>
+    <Tab.Pane inverted>
       <Grid>
         <Grid.Column width="16">
           <Header
             floated="left"
             icon="user"
+            inverted
             content={`About ${profile?.displayName}`}
           />
           {isCurrentUser && (
             <Button
               floated="right"
               basic
+              inverted
               content={editMode ? "Cancel" : "Edit Profile"}
               onClick={() => setEditMode(!editMode)}
             />

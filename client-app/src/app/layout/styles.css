@@ -1,20 +1,121 @@
-body {
-  background-color: #eaeaea !important;
+:root {
+  --dark-color: #18181b;
+  --white-color: #ffffff;
+  --grey-color: rgba(255, 255, 255, 0.15);
+  --yellow-color: #ffe21f;
+  --yellow-color-darker: #fbbd08;
+  --background-color: #363636;
 }
 
-.ui.inverted.top.fixed.menu {
-  background-image: linear-gradient(
-    135deg,
-    rgb(24, 42, 115) 0%,
-    rgb(33, 138, 174) 69%,
-    rgb(32, 167, 172) 89%
-  ) !important;
+body {
+  background-color: var(--dark-color) !important;
+  color: var(--white-color) !important;
 }
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Navbar */
+.ui.inverted.top.fixed.menu {
+  background-color: var(--dark-color);
+  border-bottom: 1px dotted var(--yellow-color);
+}
+
+/* Media */
+
+@media (max-width: 770px) {
+  .mobile {
+    margin-top: 15rem !important;
+  }
+
+  .mobile.mobile-smaller {
+    margin-top: 11rem !important;
+  }
+}
+
+/* React calendar */
 
 .react-calendar {
   width: 100%;
-  border: none;
-  box-shadow: 0 1px 2px 0 rgb(34, 36, 38, 0.15);
+  border: 1px solid var(--grey-color);
+  background-color: var(--background-color);
+  color: var(--white-color);
+}
+
+.react-calendar__navigation__label__labelText {
+  color: var(--white-color);
+}
+
+.react-calendar__navigation__arrow,
+.react-calendar__navigation__next-button {
+  color: var(--white-color);
+}
+
+.react-calendar__month-view__days__day {
+  color: var(--white-color);
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: var(--yellow-color);
+}
+
+.react-calendar__tile--now {
+  background-color: var(--grey-color);
+}
+
+.react-calendar__tile--active {
+  background-color: var(--dark-color) !important;
+}
+.react-calendar__tile:hover {
+  background-color: var(--dark-color) !important;
+}
+
+/* Filter */
+
+.ui.large.vertical.menu,
+.ui.fluid.vertical.menu {
+  background-color: var(--background-color);
+  border: 1px solid var(--grey-color);
+}
+
+/* Activity list */
+.ui.segment.inverted {
+  background-color: var(--background-color) !important;
+}
+
+.ui.segments {
+  border: 1px solid var(--grey-color) !important;
+}
+
+.item .content .header,
+.item .content .description {
+  color: var(--white-color) !important;
+}
+
+.item .content .description .yellow.label {
+  border: 1px solid var(--yellow-color) !important;
+  background-color: var(--grey-color) !important;
+}
+
+.item .content .description .grey.label {
+  border: 1px solid var(--white-color) !important;
+  background-color: var(--grey-color) !important;
+}
+/* comments */
+
+.comment .text,
+.comment .author,
+.comment .metadata {
+  color: var(--white-color) !important;
+}
+
+.ui.comments form.ui.form textarea {
+  background-color: var(--background-color) !important;
+  border: 1px solid var(--yellow-color);
+  color: var(--white-color) !important;
 }
 
 /*home page styles*/
@@ -22,12 +123,7 @@ body {
 .masthead {
   display: flex;
   align-items: center;
-  background-image: linear-gradient(
-          135deg,
-          rgb(24, 42, 115) 0%,
-          rgb(33, 138, 174) 69%,
-          rgb(32, 167, 172) 89%
-  ) !important;
+  background-color: var(--dark-color) !important;
   height: 100vh;
 }
 
@@ -44,6 +140,10 @@ body {
 .masthead h2 {
   font-size: 1.7em;
   font-weight: normal;
+}
+
+.modals .content {
+  background-color: var(--background-color) !important;
 }
 
 /*end home page styles*/

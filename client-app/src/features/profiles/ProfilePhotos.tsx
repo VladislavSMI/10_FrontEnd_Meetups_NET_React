@@ -45,27 +45,28 @@ export default observer(function ProfilePhotos({ profile }: Props) {
   }
 
   return (
-    <Tab.Pane>
-      <Grid>
+    <Tab.Pane inverted>
+      <Grid relaxed>
         <Grid.Column width={16}>
-          <Header floated="left" icon="image" content="Photos" />
+          <Header inverted floated="left" icon="image" content="Photos" />
           {isCurrentUser && (
             <Button
               floated="right"
               basic
+              inverted
               content={addPhotoMode ? "Cancel" : "Add Photo"}
               onClick={() => setAddPhotoMode(!addPhotoMode)}
             />
           )}
         </Grid.Column>
-        <Grid.Column width={16}>
+        <Grid.Column width={16} columns={2}>
           {addPhotoMode ? (
             <PhotoUploadWidget
               uploadPhoto={handlePhotoUpload}
               loading={uploading}
             />
           ) : (
-            <Card.Group itemsPerRow={5}>
+            <Card.Group centered>
               {profile.photos?.map((photo) => (
                 <Card key={photo.id}>
                   <Image src={photo.url} />
@@ -73,7 +74,7 @@ export default observer(function ProfilePhotos({ profile }: Props) {
                     <Button.Group fluid widths={2}>
                       <Button
                         basic
-                        color="green"
+                        color="yellow"
                         content="Main"
                         name={"main" + photo.id}
                         disabled={photo.isMain}

@@ -7,7 +7,6 @@ import HomePage from "../../features/home/HomePage";
 import { observer } from "mobx-react-lite";
 import { Route, Switch, useLocation } from "react-router-dom";
 import ActivityDetails from "../../features/activities/details/ActivityDetails";
-import TestErrors from "../../features/errors/TestErrors";
 import { ToastContainer } from "react-toastify";
 import NotFound from "../../features/errors/NotFound";
 import ServerError from "../../features/errors/ServerError";
@@ -64,7 +63,6 @@ function App() {
                   path="/profiles/:username"
                   component={ProfilePage}
                 />
-                <PrivateRoute path="/errors" component={TestErrors} />
                 <Route path="/server-error" component={ServerError} />
                 <Route component={NotFound} />
               </Switch>

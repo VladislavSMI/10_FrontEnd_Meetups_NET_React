@@ -26,16 +26,10 @@ export default observer(function ActivityDetailedChat({ activityId }: Props) {
 
   return (
     <>
-      <Segment
-        textAlign="center"
-        attached="top"
-        inverted
-        color="teal"
-        style={{ border: "none" }}
-      >
-        <Header>Chat about this event</Header>
+      <Segment textAlign="center" inverted>
+        <Header>Chat Room</Header>
       </Segment>
-      <Segment attached clearing>
+      <Segment inverted>
         <Comment.Group>
           <Formik
             onSubmit={(values, { resetForm }) =>

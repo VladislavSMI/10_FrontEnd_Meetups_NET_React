@@ -17,8 +17,8 @@ interface Props {
 
 export default observer(function ProfileHeader({ profile }: Props) {
   return (
-    <Segment>
-      <Grid>
+    <Segment inverted>
+      <Grid stackable>
         <Grid.Column width={12}>
           <Item.Group>
             <Item>
@@ -35,8 +35,16 @@ export default observer(function ProfileHeader({ profile }: Props) {
         </Grid.Column>
         <Grid.Column width={4}>
           <Statistic.Group widths={2}>
-            <Statistic label="Followers" value={profile.followersCount} />
-            <Statistic label="Following" value={profile.followingCount} />
+            <Statistic
+              inverted
+              label="Followers"
+              value={profile.followersCount}
+            />
+            <Statistic
+              inverted
+              label="Following"
+              value={profile.followingCount}
+            />
           </Statistic.Group>
           <Divider />
           <FollowButton profile={profile} />

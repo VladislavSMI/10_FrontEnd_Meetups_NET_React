@@ -12,7 +12,7 @@ interface Props {
 export default function ActivityListItem({ activity }: Props) {
   return (
     <Segment.Group>
-      <Segment>
+      <Segment inverted>
         {activity.isCancelled && (
           <Label
             attached="top"
@@ -21,7 +21,7 @@ export default function ActivityListItem({ activity }: Props) {
             style={{ textAlign: "center" }}
           />
         )}
-        <Item.Group>
+        <Item.Group unstackable>
           <Item>
             <Item.Image
               style={{ marginBottom: 3 }}
@@ -42,37 +42,34 @@ export default function ActivityListItem({ activity }: Props) {
               </Item.Description>
               {activity.isHost && (
                 <Item.Description>
-                  <Label basic color="orange">
-                    You are hosting this activity
-                  </Label>
+                  <Label color="yellow">You are hosting this activity</Label>
                 </Item.Description>
               )}
               {activity.isGoing && !activity.isHost && (
                 <Item.Description>
-                  <Label basic color="green">
-                    You are going to this activity
-                  </Label>
+                  <Label color="grey">You are going to this activity</Label>
                 </Item.Description>
               )}
             </Item.Content>
           </Item>
         </Item.Group>
       </Segment>
-      <Segment>
+      <Segment inverted>
         <span>
           <Icon name="clock" /> {format(activity.date!, "dd MMM yyyy h:mm aa")}
           <Icon name="marker" /> {activity.venue}
         </span>
       </Segment>
-      <Segment secondary>
+      <Segment inverted secondary>
         <ActivityListItemAttendee attendees={activity.attendees!} />
       </Segment>
-      <Segment clearing>
-        <span>{activity.description}</span>
+      <Segment inverted clearing>
+        <p>{activity.description}</p>
         <Button
           as={Link}
           to={`/activities/${activity.id}`}
-          color="teal"
+          color="yellow"
+          inverted
           floated="right"
           content="View"
         />

@@ -30,8 +30,7 @@ export default observer(function ProfileContent({ profile }: Props) {
   ];
   return (
     <Tab
-      menu={{ fluid: true, vertical: true }}
-      menuPosition="right"
+      menu={{ inverted: true, stackable: true }}
       panes={panes}
       onTabChange={(e, data) => profileStore.setActiveTab(data.activeIndex)}
     />
