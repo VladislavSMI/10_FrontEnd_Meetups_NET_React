@@ -13,7 +13,6 @@ namespace API
     public Startup(IConfiguration config)
     {
       _config = config;
-
     }
     // To register services with the dependency injection container
     // This method gets called by the runtime.
@@ -35,6 +34,7 @@ namespace API
         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
       }
 
+      // Redirects HTTP to HTTPS — safe to comment out during development if not using HTTPS locally
       // app.UseHttpsRedirection();
 
       app.UseRouting();

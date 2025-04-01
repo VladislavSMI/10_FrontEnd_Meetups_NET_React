@@ -27,6 +27,8 @@ namespace API.Controllers
     }
 
     [HttpPost]
+    // Return type IActionResult allows us to return HTTP status codes like 200 OK, 401 Unauthorized, etc. 
+    // We're not returning any data from the database in this case.
     public async Task<IActionResult> CreateActivity(Activity activity)
     {
       return Ok(await Mediator.Send(new Create.Command { Activity = activity }));
