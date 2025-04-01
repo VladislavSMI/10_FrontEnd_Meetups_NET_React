@@ -1,5 +1,4 @@
 import { observer } from "mobx-react-lite";
-import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Header, Segment, Image, Button } from "semantic-ui-react";
 import { useStore } from "../../app/stores/store";
@@ -8,11 +7,6 @@ import RegisterForm from "../users/RegisterForm";
 
 export default observer(function HomePage() {
   const { userStore, modalStore } = useStore();
-
-  function submitLogin() {
-    const values = { email: "guest@test.com", password: "Guest1$$" };
-    userStore.login(values);
-  }
 
   return (
     <Segment vertical className="masthead">
@@ -59,16 +53,6 @@ export default observer(function HomePage() {
             >
               Register
             </Button>
-            <div style={{ marginTop: "0.4rem" }}>
-              <Button
-                onClick={() => submitLogin()}
-                size="huge"
-                inverted
-                color="yellow"
-              >
-                Guest
-              </Button>
-            </div>
           </>
         )}
       </Container>

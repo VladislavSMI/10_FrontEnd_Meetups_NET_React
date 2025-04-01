@@ -64,7 +64,11 @@ namespace API.Extensions
         opt.AddPolicy("CorsPolicy", policy =>
         {
           //once we deploy ourapplication, this will become irrelevant as we will be serving our appliction from same domain
-          policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().WithExposedHeaders("WWW-Authenticate", "Pagination").WithOrigins("http://localhost:3000");
+          policy.AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+                .WithExposedHeaders("WWW-Authenticate", "Pagination")
+                .WithOrigins("http://localhost:3000", "http://127.0.0.1:3000");
           // policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().AllowAnyOrigin();
         });
       });
