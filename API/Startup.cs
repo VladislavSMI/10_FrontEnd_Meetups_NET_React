@@ -54,6 +54,9 @@ namespace API
       // app.UseHttpsRedirection();
 
       app.UseRouting();
+      // This 2 are for React app
+      app.UseDefaultFiles();
+      app.UseStaticFiles();
 
       app.UseCors("CorsPolicy");
 
@@ -65,6 +68,8 @@ namespace API
       {
         endpoints.MapControllers();
         endpoints.MapHub<ChatHub>("/chat");
+        // This endpoint is for react routes
+        endpoints.MapFallbackToController("Index", "Fallback");
       });
     }
   }
