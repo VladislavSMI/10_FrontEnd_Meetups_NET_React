@@ -18,6 +18,10 @@ body {
   align-items: center;
 }
 
+.border {
+  border: 1px solid red;
+}
+
 /* Navbar */
 .ui.inverted.top.fixed.menu {
   background-color: var(--dark-color);

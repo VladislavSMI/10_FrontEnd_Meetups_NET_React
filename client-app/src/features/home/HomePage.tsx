@@ -15,15 +15,17 @@ export default observer(function HomePage() {
   }
 
   return (
-    <Segment textAlign="center" vertical className="masthead">
-      <Container text>
-        <Header as="h1" inverted>
+    <Segment vertical className="masthead">
+      <Container textAlign="center">
+        <div className="flex-center">
           <Image
             size="massive"
             src="/assets/logo.png"
             alt="logo"
-            style={{ marginBottom: 12 }}
+            style={{ width: 80 }}
           />
+        </div>
+        <Header as="h1" inverted>
           WebDev MeetUps
         </Header>
         {userStore.isLoggedIn ? (
