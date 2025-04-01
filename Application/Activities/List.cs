@@ -6,36 +6,39 @@ using System.Threading.Tasks;
 using Persistence;
 using Microsoft.EntityFrameworkCore;
 using Application.Core;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 
 namespace Application.Activities
 {
-  // This file follows the Clean Architecture and CQRS pattern.
-  // We define the Query and its Handler as nested classes inside the List class to group related logic.
-  // This improves code organization and aligns with the MediatR request/handler structure.
+  // Follows Clean Architecture and CQRS.
+  // Query and Handler are nested to keep related logic together and align with MediatR conventions.
 
   public class List
   {
-    // Query represents a MediatR request to retrieve a list of activities.
-    // In CQRS, queries return data, while commands modify state and typically return nothing.
-    public class Query : IRequest<Result<List<Activity>>> { }
+    public class Query : IRequest<Result<List<ActivityDto>>> { }
 
-    // Handler processes the Query and retrieves the activities from the database.
-    public class Handler : IRequestHandler<Query, Result<List<Activity>>>
+
+    public class Handler : IRequestHandler<Query, Result<List<ActivityDto>>>
     {
       private readonly DataContext _context;
+      private readonly IMapper _mapper;
 
-      public Handler(DataContext context)
+      public Handler(DataContext context, IMapper mapper)
       {
-        _context = context;
+        this._mapper = mapper;
+        this._context = context;
       }
 
-      // Handles the Query request.
-      // This logic was previously in the ActivitiesController,
-      // but was moved here to follow Clean Architecture by keeping business logic in the Application layer.
-      public async Task<Result<List<Activity>>> Handle(Query request, CancellationToken cancellationToken)
+      // This logic was previously in the API controller.
+      // It's now in the Application layer to follow Clean Architecture and separate business concerns.
+      public async Task<Result<List<ActivityDto>>> Handle(Query request, CancellationToken cancellationToken)
       {
-        var activity = await _context.Activities.ToListAsync();
-        return Result<List<Activity>>.Success(activity);
+        // ProjectTo returns ActivityDto directly, so no need to manually map with _mapper.Map
+
+        var activities = await _context.Activities.ProjectTo<ActivityDto>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
+
+        return Result<List<ActivityDto>>.Success(activities);
       }
     }
   }
