@@ -32,9 +32,9 @@ namespace API.Extensions
       {
         opt.AddPolicy("CorsPolicy", policy =>
         {
-          // Once we deploy our app, this will become irrelevant as we will be serving our app from same domain
-          policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
-          // policy.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+          //once we deploy ourapplication, this will become irrelevant as we will be serving our appliction from same domain
+          policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().WithOrigins("http://localhost:3000");
+          // policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().AllowAnyOrigin();
         });
       });
 
@@ -43,6 +43,7 @@ namespace API.Extensions
       services.AddScoped<IUserAccessor, UserAccessor>();
       services.AddScoped<IPhotoAccessor, PhotoAccessor>();
       services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
+      services.AddSignalR();
 
       return services;
     }

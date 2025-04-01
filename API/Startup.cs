@@ -9,6 +9,7 @@ using Application.Activities;
 using API.Middleware;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using API.SignalR;
 
 namespace API
 {
@@ -19,7 +20,7 @@ namespace API
     {
       _config = config;
     }
-    // To register services with the dependency injection container
+    // Learning info: to register services with the dependency injection container
     // This method gets called by the runtime.
     public void ConfigureServices(IServiceCollection services)
     {
@@ -63,6 +64,7 @@ namespace API
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
+        endpoints.MapHub<ChatHub>("/chat");
       });
     }
   }

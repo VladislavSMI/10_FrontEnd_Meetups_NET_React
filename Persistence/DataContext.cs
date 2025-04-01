@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
+  // Learning info: we are using IdentityDbContext with the AppUser type to gain access to built-in Identity properties 
+  // such as UserName, Email, etc.
+  // Without Identity, we would typically inherit from just DbContext.
   public class DataContext : IdentityDbContext<AppUser>
   {
     public DataContext(DbContextOptions options) : base(options)
@@ -14,6 +17,8 @@ namespace Persistence
     public DbSet<Activity> Activities { get; set; }
     public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
     public DbSet<Photo> Photos { get; set; }
+    public DbSet<Comment> Comments { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
       base.OnModelCreating(builder);
@@ -31,10 +36,18 @@ namespace Persistence
 
       // Configure relationship: one Activity can have many Attendees
       builder.Entity<ActivityAttendee>()
-        .HasOne(aa => aa.Activity)
-        .WithMany(a => a.Attendees)
-        .HasForeignKey(aa => aa.ActivityId);
+      .HasOne(u => u.Activity)
+      .WithMany(a => a.Attendees)
+      .HasForeignKey(aa => aa.ActivityId);
+
+      // We will add configuration when activity is deleted that also all comments associated with that activity will be deleted.
+      builder.Entity<Comment>()
+      .HasOne(a => a.Activity)
+      .WithMany(c => c.Comments)
+      .OnDelete(DeleteBehavior.Cascade);
+
     }
 
   }
+}
 }
