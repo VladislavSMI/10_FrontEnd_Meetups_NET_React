@@ -34,8 +34,7 @@ export default class CommentStore {
       this.hubConnection.on("LoadComments", (comments: IChatComment[]) => {
         runInAction(() => {
           comments.forEach((comment) => {
-            //we have to manually add Z as we are not getting back from db Z at the end of time date string that indicates it is UTC time
-            comment.createdAt = new Date(comment.createdAt + "Z");
+            comment.createdAt = new Date(comment.createdAt);
           });
           this.comments = comments;
         });
