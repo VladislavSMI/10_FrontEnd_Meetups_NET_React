@@ -13,7 +13,7 @@ namespace Application.Activities
   public class Create
   {
     // Command doesn't return data so that's why IRequest is without return type
-    public class Command : IRequest
+    public class Command : IRequest<Result<Unit>>
     {
       public Activity Activity { get; set; }
     }
