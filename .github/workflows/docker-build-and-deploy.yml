@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Adjust based on your Node.js version requirement
+          node-version: "20" # Adjust based on your Node.js version requirement
 
       # Step 3: Install Node.js dependencies and build React app
       - name: Install and build React app
@@ -43,7 +43,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: kaver89/meetups:latest
+          tags: kaver89/meetups:meetups-app
 
   deploy:
     needs: build-and-push
