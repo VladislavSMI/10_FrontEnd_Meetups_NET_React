@@ -61,7 +61,12 @@ namespace API.Extensions
                 .AllowAnyHeader()
                 .AllowCredentials()
                 .WithExposedHeaders("WWW-Authenticate", "Pagination")
-                .WithOrigins("http://localhost:3000", "http://127.0.0.1:3000");
+                .WithOrigins(
+                  "https://meetups.smihula.com",
+                  "https://www.meetups.smihula.com",
+                  "http://localhost:3000",
+                  "http://127.0.0.1:3000"
+            );
           // policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().AllowAnyOrigin();
         });
       });
